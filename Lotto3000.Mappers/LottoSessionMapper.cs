@@ -1,10 +1,5 @@
 ﻿using Lotto3000.Domain.Entities;
 using Lotto3000.InterfaceModels.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lotto3000.Mappers
 {
@@ -14,7 +9,7 @@ namespace Lotto3000.Mappers
         {
             return new LottoSessionDto
             {
-                WinningNumbers = string.Join(",",model.WinningNumbers.ToArray()),
+                WinningNumbers = string.Join(",", model.WinningNumbers.ToArray()),
                 DrawDate = model.DrawDate,
             };
         }

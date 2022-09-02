@@ -1,10 +1,4 @@
-﻿using Lotto3000.Domain.Entities;
-using Lotto3000.InterfaceModels.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Lotto3000.InterfaceModels.Models;
 
 namespace Lotto3000.Services.Abstraction
 {
@@ -15,6 +9,6 @@ namespace Lotto3000.Services.Abstraction
         List<LottoTicketModel> GetWinners(int sessionId);
         List<LottoTicketModel> UserTickets(int userId);
         LottoTicketModel GetById(int id);
-        void Create(SubmitLottoTicketModel model , int userId);
+        void Create(SubmitLottoTicketModel model, int userId);
     }
 }

@@ -4,11 +4,6 @@ using Lotto3000.Exceptions;
 using Lotto3000.InterfaceModels.Models;
 using Lotto3000.Mappers;
 using Lotto3000.Services.Abstraction;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lotto3000.Services.Implementation
 {

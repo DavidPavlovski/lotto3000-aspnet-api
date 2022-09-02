@@ -1,11 +1,6 @@
 ﻿using Lotto3000.Domain.Entities;
 using Lotto3000.Helpers;
 using Lotto3000.InterfaceModels.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lotto3000.Mappers
 {

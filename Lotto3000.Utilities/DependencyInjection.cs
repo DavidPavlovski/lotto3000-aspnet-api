@@ -6,11 +6,6 @@ using Lotto3000.Services.Abstraction;
 using Lotto3000.Services.Implementation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lotto3000.Utilities
 {

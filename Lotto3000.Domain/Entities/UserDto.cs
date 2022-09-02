@@ -26,7 +26,7 @@ namespace Lotto3000.Domain.Entities
             IsAdmin = false;
         }
 
-        public void Update(UpdateUserModel model , string hashedPassword)
+        public void Update(UpdateUserModel model, string hashedPassword)
         {
             FirstName = model.FirstName;
             LastName = model.LastName;

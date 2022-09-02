@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lotto3000.Configurations
+﻿namespace Lotto3000.Configurations
 {
     public class AppSettings
     {

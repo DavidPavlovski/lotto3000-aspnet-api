@@ -1,9 +1,4 @@
 using Lotto3000.Configurations;
-using Lotto3000.DataAccess.Abstraction;
-using Lotto3000.DataAccess.Repositories;
-using Lotto3000.Domain.Entities;
-using Lotto3000.Services.Abstraction;
-using Lotto3000.Services.Implementation;
 using Lotto3000.Utilities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
