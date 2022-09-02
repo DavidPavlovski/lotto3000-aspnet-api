@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lotto3000.Domain\Lotto3000.Domain.csproj" />
+    <ProjectReference Include="..\Lotto3000.Helpers\Lotto3000.Helpers.csproj" />
+    <ProjectReference Include="..\Lotto3000.InterfaceModels\Lotto3000.InterfaceModels.csproj" />
+  </ItemGroup>
+
+</Project>

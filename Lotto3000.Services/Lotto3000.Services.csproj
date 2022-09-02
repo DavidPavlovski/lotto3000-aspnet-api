@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lotto3000.Configurations\Lotto3000.Configurations.csproj" />
+    <ProjectReference Include="..\Lotto3000.DataAccess\Lotto3000.DataAccess.csproj" />
+    <ProjectReference Include="..\Lotto3000.Domain\Lotto3000.Domain.csproj" />
+    <ProjectReference Include="..\Lotto3000.Exceptions\Lotto3000.Exceptions.csproj" />
+    <ProjectReference Include="..\Lotto3000.InterfaceModels\Lotto3000.InterfaceModels.csproj" />
+    <ProjectReference Include="..\Lotto3000.Mappers\Lotto3000.Mappers.csproj" />
+  </ItemGroup>
+
+</Project>
