@@ -34,7 +34,7 @@ namespace Lotto3000.DataAccess.Repositories
             _dbContext.LottoTickets.Update(entity);
             _dbContext.SaveChanges();
         }
-        public void Delete(int id)
+        public void Delete(LottoTicketDto entity)
         {
             throw new NotImplementedException();
         }

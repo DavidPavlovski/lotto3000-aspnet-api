@@ -141,9 +141,15 @@ namespace Lotto3000.API.Controllers
             try
             {
                 var role = GetAuthorizedRole();
+                var authenticatedUserId = GetAuthorizedId();
                 if (role != "admin")
                 {
                     throw new UserException(401, "You are not authorized to perform this action.");
+                }
+                if(authenticatedUserId == id)
+                {
+                    throw new UserException(400, "Cannot delete self.");
+
                 }
                 _userService.Delete(id);
                 return Ok("User deleted successfully");

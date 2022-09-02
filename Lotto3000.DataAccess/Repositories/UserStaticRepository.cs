@@ -30,7 +30,7 @@ namespace Lotto3000.DataAccess.Repositories
             user.Password = entity.Password;
         }
 
-        public void Delete(int id)
+        public void Delete(UserDto entity)
         {
             //StaticDb.Users.Remove();
         }

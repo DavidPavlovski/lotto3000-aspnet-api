@@ -33,7 +33,7 @@ namespace Lotto3000.DataAccess.Repositories
         }
 
 
-        public void Delete(int id)
+        public void Delete(LottoSessionDto entity)
         {
             throw new NotImplementedException();
         }

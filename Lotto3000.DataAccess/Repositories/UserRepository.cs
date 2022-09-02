@@ -31,9 +31,9 @@ namespace Lotto3000.DataAccess.Repositories
             _dbContext.Update(entity);
             _dbContext.SaveChanges();
         }
-        public void Delete(int id)
+        public void Delete(UserDto entity)
         {
-            _dbContext.Users.Remove(GetById(id));
+            _dbContext.Users.Remove(entity);
             _dbContext.SaveChanges();
         }
     }

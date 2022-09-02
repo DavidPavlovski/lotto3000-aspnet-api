@@ -23,7 +23,7 @@ namespace Lotto3000.DataAccess.Repositories
         {
             throw new NotImplementedException();
         }
-        public void Delete(int id)
+        public void Delete(LottoTicketDto entity)
         {
             throw new NotImplementedException();
         }

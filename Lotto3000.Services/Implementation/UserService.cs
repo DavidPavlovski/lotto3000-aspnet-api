@@ -95,7 +95,13 @@ namespace Lotto3000.Services.Implementation
         }
         public void Delete(int id)
         {
-            _userRepository.Delete(id);
+            var user = _userRepository.GetById(id);
+            if (user == null)
+            {
+
+                throw new UserException(404, id, $"User with Id:{id} does not exist");
+            }
+            _userRepository.Delete(user);
         }
 
         private bool IsUsernameUsed(string username)
