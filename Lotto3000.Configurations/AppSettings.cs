@@ -5,5 +5,6 @@
         public string ConnectionString { get; set; }
         public string Secret { get; set; }
         public string DefaultErrorMessage { get; set; }
+        public string AllowedOrigins { get; set; }
     }
 }

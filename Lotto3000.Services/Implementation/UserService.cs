@@ -126,6 +126,13 @@ namespace Lotto3000.Services.Implementation
             return match.Success;
         }
 
+        private bool IsUsernameValid(string username)
+        {
+            var usernameRegex = new Regex(@"^[A-z][A-z0-9-_]{5,24}$");
+            var match = usernameRegex.Match(username);
+            return match.Success;
+        }
+
         private void ValidateUpdateModel(UpdateUserModel model, int id)
         {
             if (string.IsNullOrEmpty(model.FirstName))
@@ -175,11 +182,14 @@ namespace Lotto3000.Services.Implementation
             if (string.IsNullOrEmpty(model.UserName))
             {
                 throw new UserException(400, "Username is requiered.");
-
             }
             if (IsUsernameUsed(model.UserName))
             {
                 throw new UserException(400, "Username is already used.");
+            }
+            if (!IsUsernameValid(model.UserName))
+            {
+                throw new UserException(400, "Please enter a valid username");
             }
             if (string.IsNullOrEmpty(model.Email))
             {
