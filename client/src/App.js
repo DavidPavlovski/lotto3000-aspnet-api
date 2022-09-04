@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import useAuth from './hooks/useAuth';
 import { Routes, Route } from 'react-router-dom';
 
 import Layout from './pages/Layout';
@@ -25,6 +27,15 @@ import SessionTickets from './pages/SessionTickets';
 import NewSession from './pages/NewSession';
 
 function App() {
+	const { setAuth } = useAuth();
+
+	useEffect(() => {
+		if (sessionStorage.getItem('user')) {
+			const data = JSON.parse(sessionStorage.getItem('user'));
+			setAuth(data);
+		}
+	}, [setAuth]);
+
 	return (
 		<>
 			<Navbar />

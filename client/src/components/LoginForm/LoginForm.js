@@ -15,7 +15,7 @@ function LoginForm() {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const from = location.state?.from?.pathname || '/';
-	const { setAuth } = useAuth();
+	const { auth, setAuth } = useAuth();
 	const userRef = useRef();
 	const [loading, setLoading] = useState(false);
 	const [loginDetails, setLoginDetails] = useState({
@@ -42,7 +42,7 @@ function LoginForm() {
 			setLoading(true);
 			const res = await USER_API.login(loginDetails);
 			const token = jwt(res);
-			setAuth({
+			const userData = {
 				accessToken: res,
 				id: token.nameid,
 				firstName: token.given_name,
@@ -51,7 +51,9 @@ function LoginForm() {
 				email: token.email,
 				role: token.role,
 				expirationDate: token.exp
-			});
+			};
+			setAuth(userData);
+			sessionStorage.setItem('user', JSON.stringify(userData));
 			setLoginDetails({ credential: '', password: '' });
 			setLoading(false);
 			setSuccess(true);

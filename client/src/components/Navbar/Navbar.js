@@ -9,6 +9,7 @@ function Navbar() {
 
 	const logout = () => {
 		setAuth({});
+		sessionStorage.clear();
 		navigate('/');
 	};
 	return (
