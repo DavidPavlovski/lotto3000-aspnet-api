@@ -53,6 +53,7 @@ function UserTickets() {
 							<th>Combination</th>
 							<th>Session numbers</th>
 							<th>Guessed numbers</th>
+							<th>Date created</th>
 							<th>Session</th>
 						</tr>
 					</thead>
@@ -67,6 +68,7 @@ function UserTickets() {
 										: 'To be played'}
 								</td>
 								<td>{ticket.guessedNumbers}</td>
+								<td>{new Date(ticket.created).toLocaleDateString('mk')}</td>
 								<td>{ticket.lottoSessionId ? <Link to={'/'}>view session</Link> : 'To be played'}</td>
 							</tr>
 						))}
