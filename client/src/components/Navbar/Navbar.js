@@ -1,34 +1,43 @@
-import React, { useContext } from 'react';
-import AuthContext from '../../context/AuthProvider';
+import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navigation, Links } from './Navbar.styles';
 
-function Navbar({ isLoggedIn, setLoggedIn }) {
-	const auth = useAuth();
+function Navbar() {
+	const { auth, setAuth } = useAuth();
 	const navigate = useNavigate();
-	const { setAuth } = useContext(AuthContext);
 
 	const logout = () => {
 		setAuth({});
 		navigate('/');
-		setLoggedIn(false);
 	};
 	return (
 		<Navigation>
 			<Link to='/'>Lotto3000</Link>
-			{isLoggedIn ? (
+			{auth.accessToken ? (
 				<Links>
-					<button onClick={logout} className='btn'>
+					<h4 className='user-details'>
+						Signed in as: <span>{auth.username}</span>
+					</h4>
+					{auth.role === 'admin' ? (
+						<Link to={'/adminpanel'} className='btn-link'>
+							Admin Panel
+						</Link>
+					) : (
+						<Link to={`/user/${auth.id}`} className='btn-link'>
+							Profile
+						</Link>
+					)}
+					<button onClick={logout} className='btn-link'>
 						logout
 					</button>
 				</Links>
 			) : (
 				<Links>
-					<Link to='/register' className='btn'>
+					<Link to='/register' className='btn-link'>
 						Register
 					</Link>
-					<Link to='/login' className='btn'>
+					<Link to='/login' className='btn-link'>
 						Login
 					</Link>
 				</Links>

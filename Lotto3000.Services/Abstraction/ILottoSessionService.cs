@@ -6,6 +6,6 @@ namespace Lotto3000.Services.Abstraction
     {
         public List<LottoSessionModel> GetAll();
         public LottoSessionModel GetById(int id);
-        public void Create();
+        public LottoSessionModel Create();
     }
 }

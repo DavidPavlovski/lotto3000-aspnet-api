@@ -69,12 +69,17 @@ namespace Lotto3000.API.Controllers
                 {
                     throw new UserException(401, "You are not authorized to perform this action.");
                 }
-                _lottoSessionService.Create();
-                return Ok();
+                var res = _lottoSessionService.Create();
+                return Ok(res);
             }
             catch (UserException ex)
             {
                 return StatusCode(ex.StatusCode, ex.Message);
+            }
+            catch(LottoTicketException ex)
+            {
+                return StatusCode(ex.StatusCode, ex.Message);
+
             }
             catch (LottoSessionException ex)
             {

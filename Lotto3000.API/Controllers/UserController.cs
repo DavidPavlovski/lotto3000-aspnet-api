@@ -34,7 +34,7 @@ namespace Lotto3000.API.Controllers
             }
             catch (UserException ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(ex.StatusCode, ex.Message);
             }
             catch (Exception ex)
             {
@@ -49,12 +49,34 @@ namespace Lotto3000.API.Controllers
 
             try
             {
-                _userService.Create(model);
+                _userService.Register(model);
                 return Ok("User added successfully");
             }
             catch (UserException ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(ex.StatusCode, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(_appSettings.DefaultErrorMessage);
+            }
+        }
+        [HttpPost("RegisterAdmin")]
+        public IActionResult RegisterAdmin([FromBody] RegisterUserModel model)
+        {
+            try
+            {
+                var role = GetAuthorizedRole();
+                if(role != "admin")
+                {
+                    throw new UserException(401, "You are not authorized to perform this action.");
+                }
+                _userService.RegisterAdmin(model);
+                return Ok("User added successfully");
+            }
+            catch (UserException ex)
+            {
+                return StatusCode(ex.StatusCode, ex.Message);
             }
             catch (Exception ex)
             {
@@ -78,7 +100,7 @@ namespace Lotto3000.API.Controllers
             }
             catch (UserException ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(ex.StatusCode, ex.Message);
             }
             catch (Exception ex)
             {
@@ -127,7 +149,8 @@ namespace Lotto3000.API.Controllers
             }
             catch (UserException ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(ex.StatusCode, ex.Message);
+
             }
             catch (Exception ex)
             {
@@ -156,7 +179,8 @@ namespace Lotto3000.API.Controllers
             }
             catch (UserException ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(ex.StatusCode, ex.Message);
+
             }
             catch (Exception ex)
             {

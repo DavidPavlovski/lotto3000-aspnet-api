@@ -1,9 +1,9 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm/LoginForm';
-function Login({ setLoggedIn }) {
+function Login() {
 	return (
 		<>
-			<LoginForm setLoggedIn={setLoggedIn} />
+			<LoginForm />
 		</>
 	);
 }

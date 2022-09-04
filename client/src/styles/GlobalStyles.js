@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
         --yellowPrimary:#ffeb3b;
         --redPrimary : #f44336;
         --greenPrimary:#4caf50;
+        --grey:#f3f3f3;
         --font-size-XL:2rem;
         --font-size-L:1.5rem;
         --font-size-M:1.2rem;
@@ -17,8 +18,10 @@ export const GlobalStyles = createGlobalStyle`
         --font-size-XS:0.8rem;
     }
     *{
-         box-sizing:border-box;
-         font-family :'Raleway' , sans-serif;
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family :'Raleway' , sans-serif;
     }
     h1,h2,h3{
         text-align:center;
@@ -74,5 +77,15 @@ export const GlobalStyles = createGlobalStyle`
 
    .invalid{
     color:var(--redPrimary);
+   }
+   .submit-btn{
+     display:block;
+     margin:20px auto;
+     padding : 10px 60px;
+     font-size:20px;
+     background-color:var(--pinkPrimary);
+     border:none;
+     color:var(--white);
+     letter-spacing:2px;
    }
 `;

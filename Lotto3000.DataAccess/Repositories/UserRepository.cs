@@ -26,15 +26,22 @@ namespace Lotto3000.DataAccess.Repositories
             _dbContext.Users.Add(entity);
             _dbContext.SaveChanges();
         }
-        public void Update(UserDto entity, int id)
+        public void Update(UserDto entity)
         {
             _dbContext.Update(entity);
             _dbContext.SaveChanges();
         }
+        public void Update(List<UserDto> entities)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(UserDto entity)
         {
             _dbContext.Users.Remove(entity);
             _dbContext.SaveChanges();
         }
+
+       
     }
 }

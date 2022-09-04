@@ -16,7 +16,7 @@ namespace Lotto3000.DataAccess.Repositories
 
         public IEnumerable<LottoTicketDto> GetAll()
         {
-            return _dbContext.LottoTickets.Include(x => x.User).Include(x => x.LottoSession).AsNoTracking();
+            return _dbContext.LottoTickets.Include(x => x.User).Include(x => x.LottoSession);
         }
 
         public LottoTicketDto GetById(int id)
@@ -29,9 +29,17 @@ namespace Lotto3000.DataAccess.Repositories
             _dbContext.LottoTickets.Add(entity);
             _dbContext.SaveChanges();
         }
-        public void Update(LottoTicketDto entity, int id)
+        public void Update(LottoTicketDto entity)
         {
             _dbContext.LottoTickets.Update(entity);
+            _dbContext.SaveChanges();
+        }
+        public void Update(List<LottoTicketDto> entities)
+        {
+            foreach (var entity in entities)
+            {
+                _dbContext.Update(entity);
+            }
             _dbContext.SaveChanges();
         }
         public void Delete(LottoTicketDto entity)

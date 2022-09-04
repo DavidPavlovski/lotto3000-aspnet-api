@@ -32,17 +32,22 @@ namespace Lotto3000.Services.Implementation
             }
             return res.ToLottoModel();
         }
-        public void Create()
+        public LottoSessionModel Create()
         {
             var combination = GenerateLottoCombination();
             var model = new LottoSessionDto(combination);
             var currentSessionTickets = _lottoTicketRepository.GetAll().Where(x => x.LottoSessionId == null).ToList();
+            if(currentSessionTickets.Count == 0)
+            {
+                throw new LottoTicketException(400, "No tickets submited.");
+            }
             _lottoSessionRepository.Create(model);
             currentSessionTickets.ForEach(x =>
             {
                 x.LottoSessionId = model.Id;
-                _lottoTicketRepository.Update(x, x.Id);
             });
+            _lottoTicketRepository.Update(currentSessionTickets);
+            return model.ToLottoModel();
         }
 
         private string GenerateLottoCombination()

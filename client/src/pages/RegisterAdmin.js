@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import USER_API from '../api/User_API';
-import Notification from '../components/Notification/Notification';
-
+import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner';
 import RegisterForm from '../components/RegisterForm/RegisterForm';
+import Notification from '../components/Notification/Notification';
 import Success from '../components/Success/Success';
 
-function Register() {
+function RegisterAdmin() {
+	const axiosPrivate = useAxiosPrivate();
 	const [loading, setLoading] = useState(false);
 	const [errorMessage, setErrorMessage] = useState('');
 	const [success, setSuccess] = useState(false);
@@ -41,9 +41,10 @@ function Register() {
 		try {
 			setLoading(true);
 			setSuccess(false);
-			await USER_API.register(registerData);
+			await axiosPrivate.post('/user/registeradmin', JSON.stringify({ ...registerData }));
 			setLoading(false);
 			setSuccess(true);
+			setRegisterData({ firstName: '', lastName: '', username: '', email: '', password: '', confirmPassword: '' });
 		} catch (err) {
 			setLoading(false);
 			setSuccess(false);
@@ -62,10 +63,11 @@ function Register() {
 	if (success) {
 		return (
 			<Success>
-				<h2>Successfully registered</h2>
-				<Link to={'/login'} className='proceed-to-login'>
-					Login
-				</Link>
+				<h2>Admin Registered successfully</h2>
+				<div className='options'>
+					<Link to={'/adminpanel'}>Back to admin panel</Link>
+					<button onClick={() => setSuccess(false)}>Register new admin</button>
+				</div>
 			</Success>
 		);
 	}
@@ -77,4 +79,4 @@ function Register() {
 	);
 }
 
-export default Register;
+export default RegisterAdmin;

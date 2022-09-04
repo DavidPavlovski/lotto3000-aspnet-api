@@ -72,10 +72,24 @@ namespace Lotto3000.Services.Implementation
             }
             return res.ToUserModel();
         }
-        public void Create(RegisterUserModel model)
+        public void Register(RegisterUserModel model)
         {
             ValidateModel(model);
             var user = new UserDto(model.FirstName, model.LastName, model.UserName, model.Email, PasswordHasher.HashPassword(model.Password));
+            _userRepository.Create(user);
+        }
+        public void RegisterAdmin(RegisterUserModel model)
+        {
+            ValidateModel(model);
+            var user = new UserDto
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                UserName = model.UserName,
+                Email = model.Email,
+                Password = PasswordHasher.HashPassword(model.Password),
+                IsAdmin = true
+            };
             _userRepository.Create(user);
         }
         public void Update(UpdateUserModel model, int id)
@@ -91,7 +105,7 @@ namespace Lotto3000.Services.Implementation
             }
             ValidateUpdateModel(model, id);
             user.Update(model, PasswordHasher.HashPassword(model.NewPassword));
-            _userRepository.Update(user, id);
+            _userRepository.Update(user);
         }
         public void Delete(int id)
         {

@@ -27,7 +27,11 @@ namespace Lotto3000.DataAccess.Repositories
             _dbContext.SaveChanges();
         }
 
-        public void Update(LottoSessionDto entity, int id)
+        public void Update(LottoSessionDto entity)
+        {
+            throw new NotImplementedException();
+        }
+        public void Update(List<LottoSessionDto> entities)
         {
             throw new NotImplementedException();
         }
@@ -38,6 +42,6 @@ namespace Lotto3000.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-
+       
     }
 }

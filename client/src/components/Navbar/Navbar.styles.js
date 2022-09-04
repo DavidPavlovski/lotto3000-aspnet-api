@@ -15,6 +15,11 @@ export const Navigation = styled.nav`
 		color: var(--white);
 		text-decoration: underline;
 	}
+
+	.user-details {
+		font-size: 18px;
+		color: var(--white);
+	}
 `;
 
 export const Links = styled.div`
@@ -25,7 +30,7 @@ export const Links = styled.div`
 	justify-content: space-evenly;
 	align-items: center;
 
-	.btn {
+	.btn-link {
 		display: block;
 		padding: 10px 20px;
 		background-color: var(--pinkSecondary);

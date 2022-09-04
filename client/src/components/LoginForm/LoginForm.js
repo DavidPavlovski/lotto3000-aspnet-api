@@ -1,18 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
 import jwt from 'jwt-decode';
-import { Form, FormInput, Success } from '../FormStyles/Form.styles';
+import Form from '../Form/Form';
+import FormInput from '../FormInput/FormInput';
+import Success from '../Success/Success';
+import Notification from '../Notification/Notification';
 
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import USER_API from '../../api/User_API';
 
-function LoginForm({ setLoggedIn }) {
+function LoginForm() {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const from = location.state?.from?.pathname || '/';
-
 	const { setAuth } = useAuth();
 	const userRef = useRef();
 	const [loading, setLoading] = useState(false);
@@ -22,7 +24,6 @@ function LoginForm({ setLoggedIn }) {
 	});
 	const [errorMessage, setErrorMessage] = useState('asdasd');
 	const [success, setSuccess] = useState(false);
-
 	useEffect(() => {
 		!loading && !success && userRef.current.focus();
 	}, [loading, success]);
@@ -41,7 +42,6 @@ function LoginForm({ setLoggedIn }) {
 			setLoading(true);
 			const res = await USER_API.login(loginDetails);
 			const token = jwt(res);
-			console.log(token);
 			setAuth({
 				accessToken: res,
 				id: token.nameid,
@@ -57,7 +57,6 @@ function LoginForm({ setLoggedIn }) {
 			setSuccess(true);
 			setTimeout(() => {
 				navigate(from, { replace: true });
-				setLoggedIn(true);
 			}, 2000);
 		} catch (err) {
 			setLoading(false);
@@ -78,7 +77,7 @@ function LoginForm({ setLoggedIn }) {
 		return (
 			<Success>
 				<h2>Successfully logged in.</h2>
-				<h3>Redirecting...</h3>
+				<h3 className='breathe'>Redirecting...</h3>
 			</Success>
 		);
 	}
@@ -92,8 +91,8 @@ function LoginForm({ setLoggedIn }) {
 				</h3>
 			</div>
 
-			<Form onSubmit={handleSubmit}>
-				<p className={`errMsg ${!errorMessage && 'hidden'}`}>{errorMessage}</p>
+			<Form handleSubmit={handleSubmit}>
+				{errorMessage && <Notification message={errorMessage} type='error' />}
 				<FormInput>
 					<label htmlFor='credential'>Username or Email:</label>
 					<input
